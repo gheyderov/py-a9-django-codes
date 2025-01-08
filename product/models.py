@@ -1,5 +1,7 @@
 from django.db import models
 from blog.models import AbstractModel
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your models here.
 
@@ -55,3 +57,12 @@ class ProductImage(AbstractModel):
 
     def __str__(self):
         return self.product.title
+
+
+class ProductReview(AbstractModel):
+    user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
+    message = models.TextField()
+
+    def __str__(self):
+        return f'{self.user} | {self.product.title}'
