@@ -63,7 +63,7 @@ class ProductReview(AbstractModel):
     user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
     message = models.TextField()
-    is_verified = models.BooleanField(default=False)
+    is_verified = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.user} | {self.product.title}'
