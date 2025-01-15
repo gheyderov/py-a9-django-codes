@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here. 
 
 class AbstractModel(models.Model):
@@ -21,6 +20,7 @@ class BlogCategory(AbstractModel):
 
 
 class Blog(AbstractModel):
+    user = models.ForeignKey('account.User', related_name='blogs', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
     category = models.ForeignKey('BlogCategory', on_delete=models.CASCADE, related_name='blogs')

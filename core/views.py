@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from product.models import ProductCategory
 
 # Create your views here.
 
