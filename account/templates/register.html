@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+{% endblock %}	
+
+{% block content %}
+
+		<!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>Login</h1>
+								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="hero-img-wrap">
+								<img src="images/couch.png" class="img-fluid">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
+
+        <!-- Start Register Section -->
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="login-wrap p-4 p-md-5">
+                        <h3 class="text-center mb-4">Register</h3>
+                        <form action="" method="post" enctype="multipart/form-data" class="login-form">
+							{{form.non_field_errors}}
+							{% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <!-- <input type="text" class="form-control" placeholder="First Name"> -->
+										{{form.first_name}}
+										{{form.first_name.errors}}
+									</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <!-- <input type="text" class="form-control" placeholder="Last Name"> -->
+										{{form.last_name}}
+										{{form.last_name.errors}}
+									</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <!-- <input type="text" class="form-control" placeholder="Username"> -->
+										{{form.username}}
+										{{form.username.errors}}
+									</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <!-- <input type="email" class="form-control" placeholder="Email"> -->
+										{{form.email}}
+										{{form.email.errors}}
+									</div>
+                                </div>
+								<div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <!-- <input type="email" class="form-control" placeholder="Email"> -->
+										{{form.image}}
+										{{form.image.errors}}
+									</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <!-- <input type="password" class="form-control" placeholder="Password"> -->
+										{{form.password}}
+										{{form.password.errors}}
+									</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <!-- <input type="password" class="form-control" placeholder="Confirm Password"> -->
+										{{form.confirm_password}}
+										{{form.confirm_password.errors}}
+									</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <input type="submit" value="Register" class="btn btn-primary">
+                                    </div>
+                                    <p class="text-center">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Register Section -->
+		
+{% endblock %}
+		

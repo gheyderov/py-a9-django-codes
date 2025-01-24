@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+{% endblock %}	
+
+{% block content %}
+		<!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>Login</h1>
+								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="hero-img-wrap">
+								<img src="images/couch.png" class="img-fluid">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
+
+        <!-- Start Login Section -->
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="login-wrap p-4 p-md-5">
+                        <h3 class="mb-4">Login</h3>
+                        <form action="" method="post" class="login-form">
+							{% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label for="name" class="form-label">Username</label>
+                                        <!-- <input type="text" class="form-control" id="name" placeholder="Username"> -->
+										{{form.username}}
+										{{form.username.errors}}
+									</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <!-- <input type="password" class="form-control" id="password" placeholder="Password"> -->
+										{{form.password}}
+										{{form.password.errors}}
+									</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <input type="submit" value="Login" class="btn btn-primary">
+                                    </div>
+                                    <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- End Login Section -->
+{% endblock %}		
