@@ -38,3 +38,4 @@ def login(request):
 def logout(request):
     django_logout(request)
     return redirect(reverse_lazy('login'))
+
