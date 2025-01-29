@@ -8,6 +8,10 @@ class User(AbstractUser):
     phone = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
 
+    def get_image(self):
+        if self.image:
+            return self.image.url
+        return '/static/images/no-photo.webp'
 
 class UserAddress(AbstractModel):
     user = models.ForeignKey(User, related_name='addresses', on_delete=models.CASCADE)

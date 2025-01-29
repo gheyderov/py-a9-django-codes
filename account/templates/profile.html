@@ -38,7 +38,7 @@
 			<div class="col-lg-4">
 				<div class="profile-card">
 					<div class="profile-card-header">
-						<img src="{% static 'images/person_2.jpg' %}" alt="Profile Photo" class="img-fluid">
+						<img src="{{request.user.get_image}}" alt="Profile Photo" class="img-fluid">
 					</div>
 
 				</div>
@@ -47,27 +47,31 @@
 			<div class="col-lg-8">
 				<div class="profile-info">
 					<h2>User Profile</h2>
-					<p><strong>Name:</strong> John Doe</p>
-					<p><strong>Email:</strong> john.doe@example.com</p>
-					<p><strong>Phone:</strong> +123 456 7890</p>
+					<p><strong>Name:</strong> {{request.user.get_full_name}}</p>
+					<p><strong>Email:</strong> {{request.user.email}}</p>
+					<p><strong>Phone:</strong> {{request.user.phone}}</p>
 					<button id="editProfileBtn" class="btn btn-primary">Edit Profile</button>
 				</div>
 
 				<!-- Edit Form (Hidden by Default) -->
 				<div id="editProfileForm" class="mt-4" style="display: none;">
 					<h2>Edit Profile</h2>
-					<form>
+					<form method="post">
+						{% csrf_token %}
 						<div class="mb-3">
 							<label for="name" class="form-label">Name</label>
-							<input type="text" id="name" class="form-control" value="John Doe">
+							{{form.full_name}}
+							<!-- <input type="text" id="name" class="form-control" value="John Doe"> -->
 						</div>
 						<div class="mb-3">
 							<label for="email" class="form-label">Email</label>
-							<input type="email" id="email" class="form-control" value="john.doe@example.com">
+							{{form.email}}
+							<!-- <input type="email" id="email" class="form-control" value="john.doe@example.com"> -->
 						</div>
 						<div class="mb-3">
 							<label for="phone" class="form-label">Phone</label>
-							<input type="text" id="phone" class="form-control" value="+123 456 7890">
+							{{form.phone}}
+							<!-- <input type="text" id="phone" class="form-control" value="+123 456 7890"> -->
 						</div>
 						<button type="submit" class="btn btn-success">Save Changes</button>
 						<button type="button" id="cancelEditBtn" class="btn btn-secondary">Cancel</button>
