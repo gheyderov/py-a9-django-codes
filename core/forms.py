@@ -30,10 +30,12 @@ class ContactForm(forms.ModelForm):
         }
 
     def clean(self):
+            
             value = self.cleaned_data['email']
             if not value.endswith('gmail.com'):
                 raise forms.ValidationError('Email must be gmail.com!')
-            return value
+            return super().clean()
+    
         
     def clean_first_name(self):
             name = self.cleaned_data['first_name']
