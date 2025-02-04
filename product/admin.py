@@ -20,7 +20,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = ['title']
     list_editable = ('category',)
     list_filter = ('price', 'category')
-    list_per_page = 2
     search_fields = ('title', 'category__title')
     inlines = [ProductImageInline, ProductReviewInline]
 
