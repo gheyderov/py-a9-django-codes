@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,12 +44,14 @@ INSTALLED_APPS = [
     'blog',
     'core',
     'product',
-    'order'
+    'order',
+    'rosetta'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -273,7 +276,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+
+)
+
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+    ('en', 'English'),
+    ('ru', 'Russian'),
+    ('az', 'Azerbaijan'),
+)
 
 TIME_ZONE = 'UTC'
 

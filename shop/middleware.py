@@ -8,9 +8,9 @@ class GetUserIpsMiddleware(MiddlewareMixin):
         ip = request.META.get('REMOTE_ADDR')
         if request.user.is_authenticated:
             request.user.ips = []
-        if ip not in request.user.ips:
-            request.user.ips.append(ip)
-            request.user.save()
+            if ip not in request.user.ips:
+                request.user.ips.append(ip)
+                request.user.save()
 
 
 class BlockUserMiddleware(MiddlewareMixin):
