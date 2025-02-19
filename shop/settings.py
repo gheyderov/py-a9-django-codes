@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'core',
     'product',
     'order',
-    'rosetta'
+    'rosetta',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -297,6 +298,8 @@ USE_TZ = True
 
 
 AUTH_USER_MODEL = 'account.user'
+
+LOGIN_REDIRECT_URL = 'home'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

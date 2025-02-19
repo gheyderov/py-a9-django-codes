@@ -9,6 +9,10 @@ class User(AbstractUser):
     phone = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
     ips = ArrayField(models.GenericIPAddressField(), null=True, blank=True)
+    email = models.EmailField(blank=True, unique=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = 'username',
 
     def get_image(self):
         if self.image:
