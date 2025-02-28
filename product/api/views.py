@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from product.api.serializers import CategorySerializer, ProductSerializer, ProductCreateSerializer
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 
 def categories(request):
     categories = ProductCategory.objects.all()
@@ -60,6 +62,7 @@ def product_update(request, pk):
 class ProductListApiView(ListCreateAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+    permission_classes = (IsAuthenticatedOrReadOnly, )
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
