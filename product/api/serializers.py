@@ -7,7 +7,8 @@ class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductTag
         fields = (
-            '__all__'
+            'id',
+            'title'
         )
 
 

@@ -1,9 +1,19 @@
-from product.models import ProductCategory, Product
+from product.models import ProductCategory, Product, ProductTag
 from django.http import JsonResponse
-from product.api.serializers import CategorySerializer, ProductSerializer, ProductCreateSerializer
+from product.api.serializers import CategorySerializer, ProductSerializer, ProductCreateSerializer, TagSerializer
 from rest_framework.decorators import api_view
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+
+class CategoryApiView(ListAPIView):
+    serializer_class = CategorySerializer
+    queryset = ProductCategory.objects.all()
+
+
+class TagApiView(ListAPIView):
+    serializer_class = TagSerializer
+    queryset = ProductTag.objects.all()
 
 
 def categories(request):
