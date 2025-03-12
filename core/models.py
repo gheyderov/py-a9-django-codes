@@ -4,6 +4,14 @@ from core.validators import validate_gmail
 
 # Create your models here.
 
+
+class Subscriber(AbstractModel):
+    email = models.EmailField('email')
+
+    def __str__(self):
+        return self.email
+
+
 class Contact(AbstractModel):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     "corsheaders",
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -324,6 +325,12 @@ AUTH_USER_MODEL = 'account.user'
 
 LOGIN_REDIRECT_URL = 'home'
 
+# ...
+
+# Celery settings
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
@@ -344,5 +351,5 @@ EMAIL_BACKEND = 'shop.email_backends.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'info@example.com'
-EMAIL_HOST_PASSWORD = 'dfhk eyfk oast wxr eyfk oast wxrf'
+EMAIL_HOST_PASSWORD = 'paje hlpe ltpr qywt hlpe ltpr qywt'
 EMAIL_PORT = 587
