@@ -1,9 +1,16 @@
 from product.models import ProductCategory, Product, ProductTag
+from core.models import Subscriber
 from django.http import JsonResponse
-from product.api.serializers import CategorySerializer, ProductSerializer, ProductCreateSerializer, TagSerializer
+from product.api.serializers import CategorySerializer, ProductSerializer, ProductCreateSerializer, TagSerializer, SubscriberCreateSerializer
 from rest_framework.decorators import api_view
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView, CreateAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+
+class SubscriberCreateAPIView(CreateAPIView):
+    serializer_class = SubscriberCreateSerializer
+    queryset = Subscriber.objects.all()
+
 
 
 class CategoryApiView(ListAPIView):

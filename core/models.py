@@ -6,7 +6,7 @@ from core.validators import validate_gmail
 
 
 class Subscriber(AbstractModel):
-    email = models.EmailField('email')
+    email = models.EmailField('email', unique=True)
 
     def __str__(self):
         return self.email
