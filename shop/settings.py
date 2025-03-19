@@ -374,4 +374,4 @@ EMAIL_PORT = 587
 
 
 
-# CSRF_TRUSTED_ORIGINS=['https://*.mgegrouplawfirm.com', 'https://mgegrouplawfirm.com']
+CSRF_TRUSTED_ORIGINS=['https://*.orthizo.com', 'https://orthizo.com']
