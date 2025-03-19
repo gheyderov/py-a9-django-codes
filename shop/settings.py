@@ -21,12 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0kasw)zr8a8+@ae9%h%-s0n$xy_q8q**o@qga6jb=_&bs6o!wu'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = int(os.environ.get("DEBUG", default=1))
+PROD = not DEBUG
+SECRET_KEY = os.environ.get("SECRET_KEY", "ggq4x=e3cnwpku^*v43er-=)f7f9ty^vnjwfb@w0p_y)^it9*&")
+ALLOWED_HOSTS = ['*'] # os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -95,12 +94,13 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "shop",
-        "PASSWORD": "12345",
-        "USER": 'user',
-        "HOST": 'localhost'
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', 'db_name'),
+        'USER': os.environ.get('POSTGRES_USER', 'user_name'),
+        'PORT': os.environ.get('POSTGRES_PORT', 5432),
+        'HOST': os.environ.get('POSTGRES_HOST', '64.227.79.12'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', '123')
     }
 }
 
@@ -339,8 +339,8 @@ LOGIN_REDIRECT_URL = 'home'
 # ...
 
 # Celery settings
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BROKER_URL = f"redis://{os.environ.get('REDIS_HOST', 'localhost')}:6379"
+CELERY_RESULT_BACKEND = f"redis://{os.environ.get('REDIS_HOST', 'localhost')}:6379"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -364,3 +364,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'info@example.com'
 EMAIL_HOST_PASSWORD = 'paje hlpe ltpr qywt hlpe ltpr qywt'
 EMAIL_PORT = 587
+
+
+
+
+# CSRF_TRUSTED_ORIGINS=['https://*.mgegrouplawfirm.com', 'https://mgegrouplawfirm.com']
