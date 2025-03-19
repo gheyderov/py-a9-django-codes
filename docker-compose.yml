@@ -35,16 +35,16 @@ services:
     ports:
       - 8080:8080
 
-  celery:
-    container_name: celery
-    command: celery -A shop worker
-    build: 
-      context: .
-      dockerfile: celery.dockerfile
-    depends_on: 
-      - "postgres"
-      - "redis"
-    env_file: .env
+  # celery:
+  #   container_name: celery
+  #   command: celery -A shop worker
+  #   build: 
+  #     context: .
+  #     dockerfile: celery.dockerfile
+  #   depends_on: 
+  #     - "postgres"
+  #     - "redis"
+  #   env_file: .env
 
   redis:
     image: redis
